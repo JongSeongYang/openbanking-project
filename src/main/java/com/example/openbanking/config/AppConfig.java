@@ -4,18 +4,28 @@ import okhttp3.OkHttp;
 import okhttp3.OkHttpClient;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.modelmapper.convention.NameTokenizers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
 
-    private final ModelMapper customModelMapper = new ModelMapper();
+    private final ModelMapper strictModelMapper = new ModelMapper();
+    private final ModelMapper camelModelMapper = new ModelMapper();
 
     @Bean
     public ModelMapper strictModelMapper() {
-        customModelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        return customModelMapper;
+        strictModelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        return strictModelMapper;
+    }
+
+    @Bean
+    public ModelMapper toCamelCaseMapper() {
+        camelModelMapper.getConfiguration()
+                .setDestinationNameTokenizer(NameTokenizers.UNDERSCORE)
+                .setSourceNameTokenizer(NameTokenizers.UNDERSCORE);;
+        return camelModelMapper;
     }
 
     @Bean

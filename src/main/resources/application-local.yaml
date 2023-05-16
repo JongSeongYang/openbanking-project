@@ -22,8 +22,8 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
 openbanking:
-  client-id: dbf4625-6a5e-4d99-bf7e-c7948ebbad02
+  client-id: 1dbf4625-6a5e-4d99-bf7e-c7948ebbad02
   secret-id: 674dc26b-66c2-4769-ab42-71ebb8bdd508
-  auth-code: vF2V8kzln20JQmRuNr3tlRatZCh4Xl
+  auth-code: Kt48DgY5Ha7mcYgTvvlmjs2JIJzN9c
   auth-url: https://testapi.openbanking.or.kr/oauth/2.0
   base-url: https://testapi.openbanking.or.kr/v2.0
